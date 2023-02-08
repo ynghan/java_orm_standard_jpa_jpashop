@@ -15,6 +15,9 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
     private LocalDateTime orderDate;
@@ -50,11 +53,4 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
 }
